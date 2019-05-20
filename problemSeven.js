@@ -50,7 +50,8 @@ withdraw = cost => {
     } 
     if(typeof(cost) !== 'number') {
         console.log(`I'm sorry, ${cost} is not a number. Please give me a number`)
-    }
+    }  
+        console.log(cost)
 }
 
 withdraw(Math.floor(Math.random()*1000))
