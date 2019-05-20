@@ -9,51 +9,51 @@
 // For example, the object returned for $1,744, would like look this:
 
 // {
-//   100: 17,
-//   20: 2,
-//   1: 4
-// }
+    //   100: 17,
+    //   20: 2,
+    //   1: 4
+    // }
+    
+    // **OUTPUT IS NOT IN DESCENDING ORDER**
 
 withdraw = cost => {
-    let hundreds = []
     let bills = {}
-    let billTotal = cost.toString().split('')
-    let billsArray = billTotal.map(index => {
-        if(billTotal.length == 3) {
-            if(index == billTotal[0]) {
-                bills[100] = index / 1
-            }
-            if(index == billTotal[1]) {
-                bills[20] = index % 2
-                // bills[10] = index
-            }
-            if(index == billTotal[2]) {
-                bills[1] = index / 1
-            }
+    let belowHundred = cost % 100
+    let belowFifty = belowHundred % 50
+    let belowTwenty = belowFifty % 20
+    let belowTen = belowTwenty % 10
+    let belowFive = belowTen % 5
+    if( typeof(cost) === 'number' && cost >= 1){
+        if(belowFive > 0) {
+            bills[1] = belowFive
         }
-    })
-    
-    // let reversedArray = cost.toString().split('').reverse()
-    // reversedArray.map(index => {     
-    //     if(index == reversedArray[0]){
-    //         hundreds = []
-    //         bills[1] = index / 1
-    //     }
-    //     if (index == reversedArray[1]){
-    //         hundreds= []
-    //         bills[20] = index / 2
-    //     } else {
-    //         hundreds.push(index)
-    //     }
-    // })
-    // hundreds.reverse()
-    // hundreds = hundreds.join('')
-    // bills[100] = hundreds / 1
-    console.log(bills)
-    
+        if(belowTen >= 5) {
+            bills[5] = Math.floor(belowTen / 5)
+        }
+        if(belowTwenty >= 10) {
+            bills[10] = Math.floor(belowTwenty / 10)
+        }
+        if(belowFifty >= 20) {
+            bills[20] = Math.floor(belowFifty / 20)
+        }
+        if(belowHundred / 50 >= 1) {
+            bills[50] = 1
+        }
+        if(cost >= 100){
+        bills[100] = Math.floor(cost / 100)
+        }
+        console.log(cost)
+        console.log(bills)
+    }
+    if(cost > 0 && cost < 1) {
+        console.log('Sorry, you can not withdraw change at this time.')
+    } 
+    if(typeof(cost) !== 'number') {
+        console.log(`I'm sorry, ${cost} is not a number. Please give me a number`)
+    }
 }
 
-withdraw(331)
+withdraw(Math.floor(Math.random()*1000))
 
 
 

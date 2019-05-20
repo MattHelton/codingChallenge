@@ -30,7 +30,5 @@ function kennethTest(array) {
         maxCount = 0;
         minCount = 0;
     }
-    console.log(`The most frequent item is: ${mostFreqItem}. The least frequent item is ${leastFreqItem}`)
+    return `The most frequent item is: ${mostFreqItem}. The least frequent item is ${leastFreqItem}`
 }
-
-kennethTest(array)
