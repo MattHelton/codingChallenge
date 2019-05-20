@@ -15,25 +15,24 @@
 // Therefore, there is only 1 overlap. 
 // The same pattern follows with 'b'. Our new array is based on those overlaps.
 
-// ** Did not complete. The output of this code excludes the shared C
+// ** Did not complete. The output of this code excludes a shared item.
 
-const arrayTwo = ['a', 'b', 'c', 'a', 'a', 'b', 'd'];
-const arrayOne = ['a', 'b', 'b', 'a', 'e', 'c', 'c', 'g'];
 
-overlap = (arrayOne, arrayTwo) => {
+const arrayOne = ['a', 'b', 'c', 'a', 'a', 'b', 'd'];
+const arrayTwo = ['a', 'b', 'b', 'a', 'e', 'c', 'c', 'g'];
+
+vennDiesel = (arrayOne, arrayTwo) => {
     let newArray = []
     for(let i = 0; i < arrayOne.length; i++){
+        let item = arrayOne[i]
         for(let j = 0; j < arrayTwo.length; j++){
-            if(arrayOne[i] == arrayTwo[j]){
-                arrayOne.pop()
-                arrayTwo.pop()
-                newArray.push(arrayOne[i])
+            if(item == arrayTwo[j]){
+                arrayTwo.shift()
+                newArray.push(item)
                 break
-            } else {
-                continue
-            }
+            } 
         }
     }
     console.log(newArray)
 }
-overlap(arrayOne, arrayTwo)
+vennDiesel(arrayOne, arrayTwo)
