@@ -15,12 +15,25 @@
 // Therefore, there is only 1 overlap. 
 // The same pattern follows with 'b'. Our new array is based on those overlaps.
 
-let arrayOne = ['a', 'b', 'c', 'a', 'a', 'b', 'd'];
+// ** Did not complete. The output of this code excludes the shared C
 
-let arrayTwo = ['a', 'b', 'b', 'a', 'e', 'c', 'c', 'g'];
+const arrayTwo = ['a', 'b', 'c', 'a', 'a', 'b', 'd'];
+const arrayOne = ['a', 'b', 'b', 'a', 'e', 'c', 'c', 'g'];
 
-// let overlap = arrayOne.filter(x => arrayTwo.includes(x));
-
-overlap = (arr1, arr2) => {
-
+overlap = (arrayOne, arrayTwo) => {
+    let newArray = []
+    for(let i = 0; i < arrayOne.length; i++){
+        for(let j = 0; j < arrayTwo.length; j++){
+            if(arrayOne[i] == arrayTwo[j]){
+                arrayOne.pop()
+                arrayTwo.pop()
+                newArray.push(arrayOne[i])
+                break
+            } else {
+                continue
+            }
+        }
+    }
+    console.log(newArray)
 }
+overlap(arrayOne, arrayTwo)
